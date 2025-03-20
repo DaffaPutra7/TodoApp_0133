@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
 class FormPage extends StatefulWidget {
@@ -48,41 +49,61 @@ class _FormPageState extends State<FormPage> {
   }
 
   Future<void> _pickDateTime() async {
-    DateTime? pickedDate = await showDatePicker(
+    DateTime initialDate = _selectedDateTime ?? DateTime.now();
+    
+    showModalBottomSheet(
       context: context,
-      initialDate: _selectedDateTime ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
+      builder: (BuildContext builder) {
+        return Container(
+          height: 300,
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              const Text(
+                "Set Task Date & Time",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Expanded(
+                child: CupertinoDatePicker(
+                  mode: CupertinoDatePickerMode.dateAndTime,
+                  initialDateTime: initialDate,
+                  minimumDate: DateTime(2000),
+                  maximumDate: DateTime(2100),
+                  use24hFormat: false, // AM/PM sesuai gambar
+                  onDateTimeChanged: (DateTime newDate) {
+                    setState(() {
+                      _selectedDateTime = newDate;
+                    });
+                  },
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                  "Select",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
-
-    if (pickedDate != null) {
-      TimeOfDay? pickedTime = await showTimePicker(
-        context: context,
-        initialTime: _selectedDateTime != null
-            ? TimeOfDay.fromDateTime(_selectedDateTime!)
-            : TimeOfDay.now(),
-      );
-
-      if (pickedTime != null) {
-        setState(() {
-          _selectedDateTime = DateTime(
-            pickedDate.year,
-            pickedDate.month,
-            pickedDate.day,
-            pickedTime.hour,
-            pickedTime.minute,
-          );
-          _dateError = null;
-        });
-      }
-    }
   }
 
   String _formatDateTime(DateTime? dateTime) {
     if (dateTime == null) {
       return "Select a date & time";
     }
-    return DateFormat("dd-MM-yyyy HH:mm").format(dateTime);
+    return DateFormat("dd-MM-yyyy hh:mm a").format(dateTime); // AM/PM Format
   }
 
   @override

@@ -193,10 +193,12 @@ class _FormPageState extends State<FormPage> {
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            const SizedBox(height: 5),
                             Text(
                               "Deadline: ${_formatDateTime(_tasks[index]['dateTime'])}",
-                              style: const TextStyle(color: Colors.blue),
+                              style: const TextStyle(color: Colors.grey),
                             ),
+                            const SizedBox(height: 5),
                             Text(
                               _tasks[index]['isDone'] ? "Done" : "Not Done",
                               style: TextStyle(

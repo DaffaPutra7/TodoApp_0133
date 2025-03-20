@@ -188,6 +188,13 @@ class _FormPageState extends State<FormPage> {
                             ),
                           ],
                         ),
+                        trailing: Checkbox(
+                          value: _tasks[index]['isDone'],
+                          activeColor: Colors.purple,
+                          onChanged: (bool? value) {
+                            _toggleTaskStatus(index);
+                          },
+                        ),
                       ),
                     );
                   },

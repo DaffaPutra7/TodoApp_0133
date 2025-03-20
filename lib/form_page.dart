@@ -110,6 +110,34 @@ class _FormPageState extends State<FormPage> {
                   ),
                 ],
               ),
+              Form(
+                key: _key,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "First Name",
+                      style: TextStyle(color: Colors.purple, fontSize: 14),
+                    ),
+                    TextFormField(
+                      controller: _formController,
+                      decoration: InputDecoration(
+                        hintText: "Enter your first name",
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.purple),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please enter a name";
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

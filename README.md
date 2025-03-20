@@ -1,16 +1,16 @@
-# materi_3
+## Tampilan Form Page
+![Screenshot 2025-03-21 011407](https://github.com/user-attachments/assets/f7688d20-4265-4bca-8b6f-1db288ad6df0)
 
-A new Flutter project.
+## Tampilan saat mengisi task
+![Screenshot 2025-03-21 011417](https://github.com/user-attachments/assets/6dea545d-f676-42ae-97a8-e30b553b264a)
+![Screenshot 2025-03-21 011527](https://github.com/user-attachments/assets/a4d46cf8-0ad2-4133-bb8c-4f862e74232c)
 
-## Getting Started
+## Tampilan saat task sudah diisi
+![Screenshot 2025-03-21 011534](https://github.com/user-attachments/assets/36b73e7b-0847-43d4-98ca-8d18a4d98615)
 
-This project is a starting point for a Flutter application.
+## Tampilan penggunaan checkbox
+![Screenshot 2025-03-21 011553](https://github.com/user-attachments/assets/45478371-1620-4f18-bf3a-eb40ad4e6c42)
+![Screenshot 2025-03-21 011828](https://github.com/user-attachments/assets/6bbd9c28-7c0a-43b3-aede-afece6a3c4b5)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tampilan validasi
+![Screenshot 2025-03-21 011838](https://github.com/user-attachments/assets/685a81eb-bffc-40f0-adf2-8749f3f10bf0)

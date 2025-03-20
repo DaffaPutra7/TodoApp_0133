@@ -13,17 +13,23 @@ class _FormPageState extends State<FormPage> {
   final TextEditingController _formController = TextEditingController();
   DateTime? _selectedDateTime;
   final List<Map<String, dynamic>> _tasks = [];
+  String? _dateError;
 
-  void _addTask() {
+  void _validateDateTime() {
+    setState(() {
+      _dateError = _selectedDateTime == null ? "Please select a date & time" : null;
+    });
+
     if (_key.currentState!.validate() && _selectedDateTime != null) {
       setState(() {
         _tasks.add({
           'name': _formController.text,
           'dateTime': _selectedDateTime!,
-          'isDone': false, // Default: Not Done
+          'isDone': false,
         });
         _formController.clear();
         _selectedDateTime = null;
+        _dateError = null;
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -66,6 +72,7 @@ class _FormPageState extends State<FormPage> {
             pickedTime.hour,
             pickedTime.minute,
           );
+          _dateError = null;
         });
       }
     }
@@ -110,6 +117,14 @@ class _FormPageState extends State<FormPage> {
                   ),
                 ],
               ),
+              if (_dateError != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: Text(
+                    _dateError!,
+                    style: const TextStyle(color: Colors.red, fontSize: 12),
+                  ),
+                ),
               Form(
                 key: _key,
                 child: Column(
@@ -140,7 +155,7 @@ class _FormPageState extends State<FormPage> {
                         ),
                         const SizedBox(width: 10),
                         ElevatedButton(
-                          onPressed: _addTask,
+                          onPressed: _validateDateTime,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.purple,
                             shape: RoundedRectangleBorder(

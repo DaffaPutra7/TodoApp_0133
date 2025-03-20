@@ -170,7 +170,24 @@ class _FormPageState extends State<FormPage> {
                           _tasks[index]['name'],
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                       
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Deadline: ${_formatDateTime(_tasks[index]['dateTime'])}",
+                              style: const TextStyle(color: Colors.blue),
+                            ),
+                            Text(
+                              _tasks[index]['isDone'] ? "Done" : "Not Done",
+                              style: TextStyle(
+                                color: _tasks[index]['isDone']
+                                    ? Colors.green
+                                    : Colors.red,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },

@@ -40,6 +40,16 @@ class _FormPageState extends State<FormPage> {
     });
   }
 
+  Future<void> _pickDateTime() async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: _selectedDateTime ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

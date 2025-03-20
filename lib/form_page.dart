@@ -13,6 +13,21 @@ class _FormPageState extends State<FormPage> {
   DateTime? _selectedDateTime;
   final List<Map<String, dynamic>> _tasks = [];
 
+ void _addTask() {
+    if (_key.currentState!.validate() && _selectedDateTime != null) {
+      setState(() {
+        _tasks.add({
+          'name': _formController.text,
+          'dateTime': _selectedDateTime!,
+          'isDone': false, // Default: Not Done
+        });
+        _formController.clear();
+        _selectedDateTime = null;
+      });
+      
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

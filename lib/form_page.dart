@@ -125,21 +125,20 @@ class _FormPageState extends State<FormPage> {
                     style: const TextStyle(color: Colors.red, fontSize: 12),
                   ),
                 ),
+              const SizedBox(height: 10),
               Form(
                 key: _key,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "First Name",
-                      style: TextStyle(color: Colors.purple, fontSize: 14),
-                    ),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Expanded(
                           child: TextFormField(
                             controller: _formController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
+                              labelText: "First Name",
                               hintText: "Enter your first name",
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.purple),

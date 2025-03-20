@@ -152,6 +152,30 @@ class _FormPageState extends State<FormPage> {
                   ],
                 ),
               ),
+              const SizedBox(height: 20),
+              const Text(
+                "List Tasks",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _tasks.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      color: Colors.grey.shade200,
+                      margin: const EdgeInsets.symmetric(vertical: 5),
+                      child: ListTile(
+                        title: Text(
+                          _tasks[index]['name'],
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                       
+                      ),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

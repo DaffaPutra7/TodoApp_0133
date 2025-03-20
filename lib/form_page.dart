@@ -135,6 +135,20 @@ class _FormPageState extends State<FormPage> {
                       },
                     ),
                     const SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: ElevatedButton(
+                        onPressed: _addTask,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.purple,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12)
+                        ),
+                        child: const Text("Submit", style: TextStyle(color: Colors.white),),
+                      ),
+                    ),
                   ],
                 ),
               ),

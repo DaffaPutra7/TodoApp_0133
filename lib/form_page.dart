@@ -95,7 +95,21 @@ class _FormPageState extends State<FormPage> {
               ),
               const SizedBox(height: 20),
               const Text("Task Date:", style: TextStyle(fontSize: 16)),
-              
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      _formatDateTime(_selectedDateTime),
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.calendar_today, color: Colors.blue),
+                    onPressed: _pickDateTime,
+                  ),
+                ],
+              ),
             ],
           ),
         ),

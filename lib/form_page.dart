@@ -14,7 +14,7 @@ class _FormPageState extends State<FormPage> {
   DateTime? _selectedDateTime;
   final List<Map<String, dynamic>> _tasks = [];
 
- void _addTask() {
+  void _addTask() {
     if (_key.currentState!.validate() && _selectedDateTime != null) {
       setState(() {
         _tasks.add({
@@ -119,35 +119,41 @@ class _FormPageState extends State<FormPage> {
                       "First Name",
                       style: TextStyle(color: Colors.purple, fontSize: 14),
                     ),
-                    TextFormField(
-                      controller: _formController,
-                      decoration: InputDecoration(
-                        hintText: "Enter your first name",
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.purple),
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Please enter a name";
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 10),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: ElevatedButton(
-                        onPressed: _addTask,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: _formController,
+                            decoration: InputDecoration(
+                              hintText: "Enter your first name",
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.purple),
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter a name";
+                              }
+                              return null;
+                            },
                           ),
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12)
                         ),
-                        child: const Text("Submit", style: TextStyle(color: Colors.white),),
-                      ),
+                        const SizedBox(width: 10),
+                        ElevatedButton(
+                          onPressed: _addTask,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.purple,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                          ),
+                          child: const Text(
+                            "Submit",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

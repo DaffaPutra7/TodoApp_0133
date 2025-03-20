@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({super.key});
@@ -68,6 +69,13 @@ class _FormPageState extends State<FormPage> {
         });
       }
     }
+  }
+
+  String _formatDateTime(DateTime? dateTime) {
+    if (dateTime == null) {
+      return "Select a date & time";
+    }
+    return DateFormat("dd-MM-yyyy HH:mm").format(dateTime);
   }
 
   @override
